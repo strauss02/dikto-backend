@@ -18,37 +18,9 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-<!-- ABOUT THE PROJECT -->
-
 ## About The Project
 
-[![Dikto Screen Shot](/images/diagram.png)]
+![Dikto Screen Shot](/images/diagram.png)
 
 This application was built as a project in my coding course. It demonstrates the use of AWS Cloud Services, React and more.  
 Dikto is a simple, lightweight dictionary app with some cool little features.  
@@ -155,7 +127,7 @@ Pos: "adv."
 }
 ```
 
-As you can see, this response does not contain any definition of that word. This is due to the nature of DynanoDB - complex queries can be performed only on secondary global indexes, which contain only 2 columns.  
+As you can see, this response does not contain any definition of that word. This is due to the nature of DynamoDB - complex queries can be performed only on secondary global indexes, which contain only 2 columns.  
 The client side is aware of that, and uses the random entry returned as a preemptive step before actually looking up the full defintion of a specific word.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
