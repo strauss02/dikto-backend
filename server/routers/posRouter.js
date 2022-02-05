@@ -26,6 +26,7 @@ router.get('/:part', async (req, res) => {
     ExpressionAttributeValues: {
       ':pos': pos,
     },
+    // limit number of results to prevent charges from AWS. Ideally there should be no limit for actual randomness
     Limit: 10,
   }
   // if request is sent with query letter, search by letter
@@ -36,7 +37,7 @@ router.get('/:part', async (req, res) => {
     db.query(params, (err, data) => {
       if (err) {
         console.log('error', err)
-        res.send('error')
+        res.send(`There was an unexpected error. ${err}`)
       } else {
         console.log('success')
         const entries = data.Items
@@ -63,7 +64,7 @@ router.get('/:part', async (req, res) => {
     }
     db.query(Bparams, (err, data) => {
       if (err) {
-        res.send('shit')
+        res.send(`There was an unexpected error. ${err}`)
         console.log(err)
       } else {
         const randomEntry = getRandomWord(data.Items)

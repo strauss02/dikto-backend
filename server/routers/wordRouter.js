@@ -18,7 +18,7 @@ router.get('/:word', (req, res) => {
   db.query(params, (err, data) => {
     if (err) {
       console.log('error', err)
-      res.send('error')
+      res.send(`There was an unexpected error. ${err}`)
     } else {
       console.log('success', data)
       res.send(data.Items)
@@ -36,7 +36,7 @@ router.get('/:word/:pos', (req, res) => {
   }
   db.get(params, (err, data) => {
     if (err) {
-      res.send(err)
+      res.send(`There was an unexpected error. ${err}`)
     } else {
       res.send(data)
     }

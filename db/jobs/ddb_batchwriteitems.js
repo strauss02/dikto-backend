@@ -1,8 +1,6 @@
-import {
-  DynamoDBClient,
-  BatchExecuteStatementCommand,
-  BatchWriteItemCommand,
-} from '@aws-sdk/client-dynamodb'
+// This batch job was used once in the beginning of the project to fill the DB with information.
+
+import { DynamoDBClient, BatchWriteItemCommand } from '@aws-sdk/client-dynamodb'
 import dictionary from './../dictionary.json'
 
 const createPutReqObj = (entryObj) => {
@@ -32,23 +30,8 @@ const createPutReqObj = (entryObj) => {
     },
   }
 
-  // console.dir(putReqTemplate, { depth: null })
   return putReqTemplate
 }
-
-const exampleEntry = {
-  pos: 'n.',
-  synonyms:
-    'Detestation; loathing; abhorrence; disgust; aversion; loathsomeness; odiousness. Sir W. Scott.',
-  word: 'ABOMINATION',
-  definitions: [
-    'The feeling of extreme disgust and hatred; abhorrence; detestation; loathing; as, he holds tobacco in abomination.',
-    'That which is abominable; anything hateful, wicked, or shamefully vile; an object or state that excites disgust and hatred; a hateful or shameful vice; pollution. Antony, most large in his abominations. Shak.',
-    'A cause of pollution or wickedness.',
-  ],
-}
-
-// console.log(createPutReqObj(exampleEntry))
 
 function checkForDuplicates(arr, obj) {
   if (arr.length < 1) {
@@ -57,8 +40,6 @@ function checkForDuplicates(arr, obj) {
 
   if (
     arr.some((entry) => {
-      // console.dir(entry, { depth: null })
-      // console.dir(obj, { depth: null })
       if (
         entry.PutRequest.Item.Word.S === obj.PutRequest.Item.Word.S &&
         entry.PutRequest.Item.Pos.S === obj.PutRequest.Item.Pos.S
@@ -86,17 +67,13 @@ function preparePutReqArr(startIndex) {
     // if array contains the freshly made putReqObj, it wouldn't be added
     if (checkForDuplicates(putReqArr, putReqObj)) {
       // loop goes on without adding the duplicate
-      console.log('I POOPED')
     } else {
-      console.log('I PEED')
       putReqArr.push(putReqObj)
     }
   }
 
   return putReqArr
 }
-
-// console.dir(preparePutReqArr(), { depth: null })
 
 const DBclient = new DynamoDBClient()
 
@@ -108,8 +85,6 @@ async function sendBatchPutReq(startIndex) {
   }
 
   params.RequestItems.dictionary = preparePutReqArr(startIndex)
-
-  // console.dir(params, { depth: null })
 
   try {
     const data = await DBclient.send(new BatchWriteItemCommand(params))
