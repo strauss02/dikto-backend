@@ -62,7 +62,7 @@ A modern browser.
 
 As explained in the diagram, the API includes several endpoints.
 
-### The word path
+### The _word_ path
 
 The ` /word/:word` endpoint recieves a word as a query parameter. It is used by the client side to request entries that match that word.  
 For example, going `/word/banana` would bring up this result in a JSON format:
