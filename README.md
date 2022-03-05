@@ -8,7 +8,7 @@
   <p align="center">
     the official API of Dikto
     <br />
-    <a href="https://0pv5ubqq5l.execute-api.eu-west-1.amazonaws.com/dev">API URL</a>
+    <a href="https://d8li2qiaoh.execute-api.eu-west-1.amazonaws.com/dev/">API URL</a>
     ·
     <a href="http://dikto-client.s3-website.eu-west-3.amazonaws.com/">Visit App</a>
     ·
